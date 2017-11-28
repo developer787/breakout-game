@@ -5,23 +5,24 @@ import DPI from 'canvas-dpi-scaler'
 
 class Canvas extends React.Component {
 	componentDidMount() {
-		this.updateCanvas()
+		this.initCanvas()
 	}
-	componentDidUpdate(){
-		this.updateCanvas()
-	}
-	updateCanvas() {
+	shouldComponentUpdate(props) {
+        return false
+    }
+	initCanvas() {
 		const ctx = this.refs.canvas.getContext('2d')
 		const canvas = this.refs.canvas
 		const width = window.innerWidth
 		const height = window.innerHeight
 		const ratio = DPI(canvas, ctx, width, height)
 		console.log(ratio)
-		if(ratio === 1){
+		if (ratio === 1) {
 			canvas.width = width
 			canvas.height = height
 		}
 	}
+
 	render() {
 		return (
 			<canvas ref="canvas">
