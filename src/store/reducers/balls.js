@@ -2,7 +2,9 @@ const initialState = {
 	ballColor: "blue",
 	ballRadius: "50",
 	ballX: 150,
-	ballY: 150
+	ballY: 150,
+	dx: 2,
+	dy: -2
 }
 export default (state = initialState, action) => {
 	const update = (

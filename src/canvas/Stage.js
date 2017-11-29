@@ -14,6 +14,8 @@ const mapStateToProps = (state) => {
 		ballX: state.balls.ballX,
 		ballY: state.balls.ballY,
 		ballRadius: state.balls.ballRadius,
+		dx: state.balls.dx,
+		dy: state.balls.dy,
 		ballColor: state.balls.ballColor
 
 	}
@@ -34,6 +36,8 @@ class stage extends React.Component {
 			ballY,
 			ballRadius,
 			ballColor,
+			dx,
+			dy,
 			height } = this.props
 		if (ctx) {
 			let i = 0
@@ -42,6 +46,7 @@ class stage extends React.Component {
 				console.log(i++)
 				// Start drawing
 				greenBall.draw(ctx, ballX, ballY, ballRadius, ballColor)
+				greenBall.move(ballX, ballY, dx, dy, width, height, ballRadius)
 				// End Drawing
 				requestAnimationFrame(gameLoop)
 			})
@@ -53,40 +58,3 @@ class stage extends React.Component {
 const Stage = connect(mapStateToProps)(stage)
 
 export default Stage
-
-function drawBall(ctx, x, y) {
-	var ballRadius = 10;
-
-	ctx.beginPath();
-	ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-	ctx.fillStyle = "#0095DD";
-	ctx.fill();
-	ctx.closePath();
-}
-// function draw(ctx, vw, vh) {
-//         var ballRadius = 10;
-
-// var x = vw/2;
-// var y = vh-30;
-// var dx = 2;
-// var dy = -2;
-//     drawBall(ctx, x, y);
-
-//     if(x + dx > vw-ballRadius || x + dx < ballRadius) {
-//         dx = -dx;
-//     }
-//     if(y + dy > vh-ballRadius || y + dy < ballRadius) {
-//         dy = -dy;
-//     }
-
-//     x += dx;
-//     y += dy;
-// }
-
-// export default () => {
-
-//   // Your artwork starts here...
-
-//     draw(ctx, vw, vh)
-// 	// And it ends here.
-// }
