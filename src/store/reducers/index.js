@@ -1,9 +1,11 @@
 import { combineReducers } from "redux"
 import classNames from "./classNames"
+import canvas from "./canvas"
 import messages from "./messages"
 import sound from "./sound"
 
 const appReducer = combineReducers({
+    canvas,
     classNames,
     messages,
     sound

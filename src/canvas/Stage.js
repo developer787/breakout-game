@@ -1,3 +1,36 @@
+import React from 'react'
+import { connect } from 'react-redux'
+// import Stage from './Stage'
+// import { CANVAS_INIT } from '../store/actions'
+// import DPI from 'canvas-dpi-scaler'
+
+const mapStateToProps = (state) => {
+	return {
+		canvas: state.canvas.canvas,
+		ctx: state.canvas.ctx,
+		height: state.canvas.height,
+		width: state.canvas.width
+	}
+}
+// const mapDispatch = (dispatch) => {
+// 	return {
+// 		canvasInit: (props)=>dispatch(CANVAS_INIT(props))
+// 	}
+// }
+
+class stage extends React.Component {
+	render() {
+		const { ctx } = this.props
+	    if(ctx) {
+	    	drawBall(ctx, 20, 20)
+	    }
+		return null
+	}
+}
+const Stage = connect(mapStateToProps)(stage)
+
+export default Stage
+
 function drawBall(ctx, x, y) {
         var ballRadius = 10;
 
@@ -7,29 +40,30 @@ function drawBall(ctx, x, y) {
     ctx.fill();
     ctx.closePath();
 }
-function draw(ctx, vw, vh) {
-        var ballRadius = 10;
+// function draw(ctx, vw, vh) {
+//         var ballRadius = 10;
 
-var x = vw/2;
-var y = vh-30;
-var dx = 2;
-var dy = -2;
-    drawBall(ctx, x, y);
+// var x = vw/2;
+// var y = vh-30;
+// var dx = 2;
+// var dy = -2;
+//     drawBall(ctx, x, y);
     
-    if(x + dx > vw-ballRadius || x + dx < ballRadius) {
-        dx = -dx;
-    }
-    if(y + dy > vh-ballRadius || y + dy < ballRadius) {
-        dy = -dy;
-    }
+//     if(x + dx > vw-ballRadius || x + dx < ballRadius) {
+//         dx = -dx;
+//     }
+//     if(y + dy > vh-ballRadius || y + dy < ballRadius) {
+//         dy = -dy;
+//     }
     
-    x += dx;
-    y += dy;
-}
+//     x += dx;
+//     y += dy;
+// }
 
-export default (ctx, vw, vh, audio, mouse) => {
-  // Your artwork starts here...
+// export default () => {
+    
+//   // Your artwork starts here...
 	
-    draw(ctx, vw, vh)
-	// And it ends here.
-}  
+//     draw(ctx, vw, vh)
+// 	// And it ends here.
+// }  
