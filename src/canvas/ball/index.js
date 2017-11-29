@@ -1,18 +1,8 @@
 import React, { Component } from 'react'
 
 class ball extends Component {
-    move(posX, posY, dx, dy, width, height, ballRadius) {
-        console.log("<-ooo->")
-        if (posX + dx > width - ballRadius || posX + dx < ballRadius) {
-            dx = -dx;
-        }
-        if (posY + dy > height - ballRadius || posY + dy < ballRadius) {
-            dy = -dy;
-        }
-
-        posX += dx;
-        
-        posY += dy;
+    move(posX, posY, dx, dy, width, height, ballRadius, moveLeft, moveBall) {
+        moveBall()
     }
     draw(ctx, posX, posY, radius, color) {
         

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Ball from './ball'
 // import Stage from './Stage'
-// import { CANVAS_INIT } from '../store/actions'
+import { BALL_MOVE_LEFT, BALL_MOVE_RIGHT, BALL_MOVE } from '../store/actions'
 // import DPI from 'canvas-dpi-scaler'
 
 const mapStateToProps = (state) => {
@@ -20,11 +20,13 @@ const mapStateToProps = (state) => {
 
 	}
 }
-// const mapDispatch = (dispatch) => {
-// 	return {
-// 		canvasInit: (props)=>dispatch(CANVAS_INIT(props))
-// 	}
-// }
+const mapDispatch = (dispatch) => {
+	return {
+		moveLeft: ()=>dispatch(BALL_MOVE_LEFT()),
+		moveRight: ()=>dispatch(BALL_MOVE_RIGHT()),
+		moveBall: ()=>dispatch(BALL_MOVE())
+	}
+}
 const greenBall = new Ball()
 
 class stage extends React.Component {
@@ -38,6 +40,9 @@ class stage extends React.Component {
 			ballColor,
 			dx,
 			dy,
+			moveLeft,
+			moveRight,
+			moveBall,
 			height } = this.props
 		if (ctx) {
 			let i = 0
@@ -46,7 +51,10 @@ class stage extends React.Component {
 				console.log(i++)
 				// Start drawing
 				greenBall.draw(ctx, ballX, ballY, ballRadius, ballColor)
-				greenBall.move(ballX, ballY, dx, dy, width, height, ballRadius)
+				greenBall.move(
+					ballX, ballY, dx, dy, 
+					width, height, ballRadius, 
+					moveLeft, moveRight, moveBall)
 				// End Drawing
 				requestAnimationFrame(gameLoop)
 			})
