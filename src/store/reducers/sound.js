@@ -1,5 +1,6 @@
 const initialState = {
 	music: "STOPPED",
+	pop: "STOPPED"
 }
 export default (state = initialState, action) => {
 	const update = (
@@ -13,6 +14,14 @@ export default (state = initialState, action) => {
 		case 'STOP_MUSIC':
 			return update(state, {
 				music: "STOPPED"
+			})
+		case 'PLAY_POP':
+			return update(state, {
+				pop: "PLAYING"
+			})
+		case 'STOP_POP':
+			return update(state, {
+				pop: "STOPPED"
 			})
 		default:
 			return state;
