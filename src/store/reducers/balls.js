@@ -32,6 +32,7 @@ export default (state = initialState, action) => {
 			case 'INVERT_DIRECTION_Y':
 			return update(state, {
 				dy: -state.dy
+				
 			})
 		default:
 			return state;
