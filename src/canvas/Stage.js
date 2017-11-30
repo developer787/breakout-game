@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Ball from './ball'
 // import Stage from './Stage'
-import { BALL_MOVE_LEFT, BALL_MOVE_RIGHT, BALL_MOVE } from '../store/actions'
+import { UPDATE_POSITION } from '../store/actions'
 // import DPI from 'canvas-dpi-scaler'
 
 const mapStateToProps = (state) => {
@@ -22,47 +22,33 @@ const mapStateToProps = (state) => {
 }
 const mapDispatch = (dispatch) => {
 	return {
-		moveLeft: ()=>dispatch(BALL_MOVE_LEFT()),
-		moveRight: ()=>dispatch(BALL_MOVE_RIGHT()),
-		moveBall: ()=>dispatch(BALL_MOVE())
+		updatePosition: (payload) => dispatch(UPDATE_POSITION(payload))
+
 	}
 }
 const greenBall = new Ball()
 
-class stage extends React.Component {
-	render() {
-		const { 
-			ctx, 
-			width,
-			ballX,
-			ballY,
-			ballRadius,
-			ballColor,
-			dx,
-			dy,
-			moveLeft,
-			moveRight,
-			moveBall,
-			height } = this.props
-		if (ctx) {
-			let i = 0
-			requestAnimationFrame(function gameLoop() {
-				ctx.clearRect(0, 0, width, height)
-				console.log(i++)
-				// Start drawing
-				greenBall.draw(ctx, ballX, ballY, ballRadius, ballColor)
-				greenBall.move(
-					ballX, ballY, dx, dy, 
-					width, height, ballRadius, 
-					moveLeft, moveRight, moveBall)
-				// End Drawing
-				requestAnimationFrame(gameLoop)
-			})
-
-		}
-		return null
+const stage =(props)=>{
+	let i = 0
+	const {
+		dx, updatePosition, dy,
+		ballX, ballY, ballRadius, ballColor,
+		ctx, width, height} = props
+	if(ctx){
+		//requestAnimationFrame(function gameLoop() {
+			ctx.clearRect(0, 0, width, height)
+			// Start drawing
+			  console.log(i++)
+			  greenBall.draw(ctx, ballX, ballY, ballRadius, ballColor)
+			  //greenBall.move(ballX, ballY, dx, dy, width, height, ballRadius, updatePosition)
+			// End Drawing
+		//	requestAnimationFrame(gameLoop)
+		//})
 	}
+		
+	return null
+	
 }
-const Stage = connect(mapStateToProps)(stage)
+const Stage = connect(mapStateToProps, mapDispatch)(stage)
 
 export default Stage

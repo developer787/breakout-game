@@ -16,13 +16,18 @@ export default (state = initialState, action) => {
 				ballColor: "red",
 				ballRadius: "150"
 			})
+		case 'UPDATE_POSITION':
+			return update(state, {
+				ballX: action.payload.ballX,
+				ballY: action.payload.ballY
+			})
 		case 'BALL_MOVE_RIGHT':
 			return update(state, {
-				ballX: state.ballX + 2
+				ballX: state.ballX + state.dx
 			})
-		case 'BALL_MOVE_LEFT':
+		case 'INVERT_DIRECTION_X':
 			return update(state, {
-				ballX: state.ballX - 2
+				dx: -state.dx
 			})
 		default:
 			return state;
