@@ -5,10 +5,11 @@ import popBall from './popBall.wav'
 
 class Pop extends Component {
 	render() {
-		const { playStatus } = this.props
+		const { playStatus, done } = this.props
 		return (
 			  <Sound
 			    volume={90}
+			    onFinishedPlaying={done}
 			    url={popBall}
 			    playStatus={playStatus}/>
 		)

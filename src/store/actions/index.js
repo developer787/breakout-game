@@ -15,6 +15,8 @@ export const INVERT_DIRECTION_X = () => ({ type: 'INVERT_DIRECTION_X' })
 export const INVERT_DIRECTION_Y = () => ({ type: 'INVERT_DIRECTION_Y' })
 export const PLAY_POP = () => ({ type: 'PLAY_POP' })
 export const STOP_POP = () => ({ type: 'STOP_POP' })
+export const DONE = () => ({ type: 'STOP_POP' })
+
 
 
 

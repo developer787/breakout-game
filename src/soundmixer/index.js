@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import Music from './music'
 import Pop from './pop'
 
+import { DONE } from '../store/actions'
+
 
 soundManager.setup({
 	ignoreMobileRestrictions : true
@@ -16,21 +18,25 @@ const mapStateToProps = (state) => {
 	}
 }
 
-
+const mapDispatch = (dispatch)=>{
+	return {
+		done: ()=>dispatch(DONE())
+	}
+}
 
 class soundMixer extends Component {
 	render() {
-		const { musicStatus, popStatus } = this.props
+		const { musicStatus, popStatus, done } = this.props
 
 		return (
 			<div className={"soundmixer"}>
 			  <Music playStatus={musicStatus}/>
-			  <Pop playStatus={popStatus} />
+			  <Pop done={done} playStatus={popStatus} />
 			</div>
 		)
 	}
 }
 
 const SoundMixer = connect(
-	mapStateToProps)(soundMixer)
+	mapStateToProps, mapDispatch)(soundMixer)
 export default SoundMixer
