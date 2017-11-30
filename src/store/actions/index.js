@@ -12,6 +12,8 @@ export const CANVAS_INIT = (action) => {
 export const BALL_MOVE_LEFT = () => ({ type: 'BALL_MOVE_LEFT' })
 export const BALL_MOVE_RIGHT = () => ({ type: 'BALL_MOVE_RIGHT' })
 export const INVERT_DIRECTION_X = () => ({ type: 'INVERT_DIRECTION_X' })
+export const INVERT_DIRECTION_Y = () => ({ type: 'INVERT_DIRECTION_Y' })
+
 
 export const BALL_MOVE = () => ({ type: 'BALL_MOVE' })
 export const UPDATE_POSITION = (action) => {

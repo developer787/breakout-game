@@ -29,6 +29,10 @@ export default (state = initialState, action) => {
 			return update(state, {
 				dx: -state.dx
 			})
+			case 'INVERT_DIRECTION_Y':
+			return update(state, {
+				dy: -state.dy
+			})
 		default:
 			return state;
 	}
