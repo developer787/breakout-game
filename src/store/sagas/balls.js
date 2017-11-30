@@ -26,6 +26,7 @@ export function* balls() {
 		if (ballX + dx > width - ballRadius || ballX + dx < ballRadius) {
 
 			store.dispatch(INVERT_DIRECTION_X())
+		
 			store.dispatch(PLAY_POP())
 		}
 		if (ballY + dy > height - ballRadius || ballY + dy < ballRadius) {
@@ -34,7 +35,6 @@ export function* balls() {
 			store.dispatch(PLAY_POP())
 
 		}
-		store.dispatch(STOP_POP())
 		ballX += dx
 		ballY += dy
 		store.dispatch(UPDATE_POSITION({
