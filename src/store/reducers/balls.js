@@ -1,8 +1,8 @@
 const initialState = {
 	ballColor: "blue",
 	ballRadius: "50",
-	ballX: 150,
-	ballY: 150,
+	ballX: 300,
+	ballY: 300,
 	dx: 2,
 	dy: -2
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Ball from './ball'
+import Square from './square'
 // import Stage from './Stage'
 import { UPDATE_POSITION } from '../store/actions'
 // import DPI from 'canvas-dpi-scaler'
@@ -13,6 +14,10 @@ const mapStateToProps = (state) => {
 		width: state.canvas.width,
 		ballX: state.balls.ballX,
 		ballY: state.balls.ballY,
+		cuadroX: state.square.cuadroX,
+		cuadroY: state.square.cuadroY,
+		cuadroAltura: state.square.cuadroAltura,
+		cuadroAnchura: state.square.cuadroAnchura,
 		ballRadius: state.balls.ballRadius,
 		dx: state.balls.dx,
 		dy: state.balls.dy,
@@ -27,11 +32,13 @@ const mapDispatch = (dispatch) => {
 	}
 }
 const greenBall = new Ball()
+const square = new Square()
 
 const stage =(props)=>{
 	let i = 0
 	const {
 		dx, updatePosition, dy,
+		cuadroAnchura, cuadroAltura, cuadroX, cuadroY,
 		ballX, ballY, ballRadius, ballColor,
 		ctx, width, height} = props
 	if(ctx){
@@ -40,6 +47,8 @@ const stage =(props)=>{
 			// Start drawing
 			  console.log(i++)
 			  greenBall.draw(ctx, ballX, ballY, ballRadius, ballColor)
+			  square.draw(ctx, width, height, "yellow", cuadroX, cuadroY, cuadroAltura, cuadroAnchura)
+			  
 			  //greenBall.move(ballX, ballY, dx, dy, width, height, ballRadius, updatePosition)
 			// End Drawing
 		//	requestAnimationFrame(gameLoop)

@@ -22,6 +22,12 @@ export const DONE = () => ({ type: 'STOP_POP' })
 
 
 export const BALL_MOVE = () => ({ type: 'BALL_MOVE' })
+export const SQUARE_INIT = (action) => {
+	return {
+		type: 'SQUARE_INIT',
+		payload: action
+	}
+}
 export const UPDATE_POSITION = (action) => {
 	return {
 		type: 'UPDATE_POSITION',
